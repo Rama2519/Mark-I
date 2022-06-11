@@ -1,9 +1,14 @@
 import wikipedia
 from variables import *
 
-
+# Search and Open Files
+if command[0] == "open" and len(command) == 2:
+    command.remove('open')
+    command = list_to_string(command)
+    filepath = findfile(command, "C:")
+    print(filepath)
 # Open Website
-if command[0] == "open" and command[2] == "website":
+elif command[0] == "open" and command[2] == "website":
     command.remove('open')
     command.remove('website')
     command = list_to_string(command)

@@ -3,13 +3,21 @@ import pyautogui as pag
 from selenium import webdriver
 from time import sleep as s
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 import speech_recognition as sr
+import os
 
 opening = "opening"
 playing = "playing"
 alexa = "alexa"
 listening = "How can I help you?: "
 options = "Do you want me to play on YouTube or Amazon Music?"
+
+
+def findfile(name, path):
+    for dirpath, dirname, filename in os.walk(path):
+        if name in filename:
+            return os.path.join(dirpath, name)
 
 
 def speak_text(x):
@@ -45,7 +53,7 @@ def music_amazon(x):
 
 
 def music_yt(x):
-    yt = webdriver.Chrome("C:/Users/ramas/chromedriver.exe")
+    yt = webdriver.Chrome(service=Service("C:/Users/ramas/chromedriver.exe"))
     yt.maximize_window()
     yt.get('https://www.youtube.com')
     s(0.5)
@@ -62,7 +70,7 @@ def music_yt(x):
 
 
 def website(x):
-    ws = webdriver.Chrome("C:/Users/ramas/chromedriver.exe")
+    ws = webdriver.Chrome(service=Service("C:/Users/ramas/chromedriver.exe"))
     ws.maximize_window()
     ws.get('https://www.' + x + '.com')
     while True:
