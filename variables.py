@@ -113,5 +113,3 @@ with sr.Microphone() as source:
     print('listening.....')
     audio = r.listen(source)
     user_input = [r.recognize_google(audio)]
-
-command = convert(user_input)
